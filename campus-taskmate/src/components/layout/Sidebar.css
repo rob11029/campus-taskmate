@@ -1,0 +1,24 @@
+.sidebar {
+    width: 60px;
+    background-color: #4e5ee4;
+    height: 100vh;
+    padding: 1rem 0;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 2rem;
+  }
+  
+  .sidebar li {
+    margin: 1.5rem 0;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  

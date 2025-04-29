@@ -1,0 +1,47 @@
+.task-form-dark {
+    background: #1e1e1e;
+    color: #ddd;
+    padding: 1.5rem;
+    border-radius: 10px;
+    max-width: 500px;
+    margin-top: 2rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .task-form-dark input,
+  .task-form-dark textarea,
+  .task-form-dark select,
+  .task-form-dark button {
+    background: #2b2b2b;
+    color: #fff;
+    border: 1px solid #444;
+    padding: 0.6rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 0.95rem;
+  }
+  
+  .task-form-dark textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+  
+  .task-form-dark .form-row {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .task-form-dark button {
+    background-color: #4e5ee4;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+  }
+  
+  .task-form-dark button:hover {
+    background-color: #3b4bc7;
+  }
+  
