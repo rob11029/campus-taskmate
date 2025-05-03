@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   position: fixed;
 }
 
@@ -25,8 +26,8 @@
 .sign-out-btn {
   margin-bottom: 1rem;
   padding: 0.5rem;
-  background-color: #ff4d4d;
   color: white;
+  background-color: #3a49b5;
   border: none;
   border-radius: 5px;
   cursor: pointer;

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Login.css';
 
 function Login({onLogin}) {
     const [username, setUsername] = useState('');
@@ -29,7 +30,10 @@ function Login({onLogin}) {
 
     return (
         <div className="login-page">
-          <h1>Login</h1>
+          <header className="login-header">
+            <h1>Campus Taskmate</h1>
+            <p>Planning for students made easy</p>
+          </header>
           <form onSubmit={handleLogin}>
             <input
               type="text"
