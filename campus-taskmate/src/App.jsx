@@ -5,20 +5,43 @@ import Sidebar from './components/layout/Sidebar';
 import TaskForm from './components/TaskForm';
 import Modal from './components/Modal';
 import Login from './Login';
+import CalendarGrid from './components/CalendarGrid';
+import KanbanView from './components/KanbanView';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login state
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [section, setSection] = useState('Dashboard');
-  const [showModal, setShowModal] = useState(false); // Modal toggle
+  const [showModal, setShowModal] = useState(false);
+  const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 2000);
     return () => clearTimeout(timer);
   }, []);
 
+  // ✅ Reusable task-fetching function
+  const fetchTasks = async () => {
+    try {
+      const res = await fetch(`https://68143536225ff1af162829e7.mockapi.io/campus-taskmate/tasks?userId=${currentUser.id}`);
+      const data = await res.json();
+      setTasks(data);
+    } catch (err) {
+      console.error('Error fetching tasks:', err);
+    }
+  };
+
+  useEffect(() => {
+    if (currentUser) {
+      fetchTasks();
+    }
+  }, [currentUser]);
+
   const handleSignOut = () => {
     setIsLoggedIn(false);
+    setCurrentUser(null);
+    setTasks([]);
   };
 
   if (loading) {
@@ -35,11 +58,17 @@ function App() {
         <Route
           path="/"
           element={
-            isLoggedIn ? <Navigate to="/dashboard" /> : <Login onLogin={() => setIsLoggedIn(true)} />
+            isLoggedIn ? (
+              <Navigate to="/dashboard" />
+            ) : (
+              <Login onLogin={(user) => {
+                setCurrentUser(user);
+                setIsLoggedIn(true);
+              }} />
+            )
           }
         />
 
-        {/* Main app route */}
         <Route
           path="/dashboard"
           element={
@@ -49,8 +78,11 @@ function App() {
                 <main className="main-content">
                   {section === 'Dashboard' && (
                     <>
-                      <h1>Campus TaskMate 📘</h1>
-                      <p>Welcome! Start adding tasks and managing your schedule.</p>
+                      <div className="dashboard-header">
+                        <h1>Campus TaskMate 📘</h1>
+                        <p>Welcome, {currentUser?.username}!</p>
+                      </div>
+                      <KanbanView currentUser={currentUser} tasks={tasks} />
                     </>
                   )}
 
@@ -65,12 +97,18 @@ function App() {
                       </button>
 
                       <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
-                        <TaskForm />
+                        <TaskForm currentUser={currentUser} fetchTasks={fetchTasks} />
                       </Modal>
                     </div>
                   )}
 
-                  {section === 'Calendar' && <h1>📅 Calendar View</h1>}
+                  {section === 'Calendar' && (
+                    <>
+                      <h1>📅 Calendar View</h1>
+                      <CalendarGrid tasks={tasks} />
+                    </>
+                  )}
+
                   {section === 'Progress' && <h1>📊 Progress Stats</h1>}
                   {section === 'Settings' && <h1>⚙️ Settings</h1>}
                 </main>

@@ -58,3 +58,60 @@
   background-color: #3b4bc7;
 }
 
+.rbc-time-content > .rbc-time-gutter {
+  width: 90px !important;
+  min-width: 90px;
+}
+
+
+.rbc-event {
+  font-size: 0.9rem;
+  padding: 4px 6px;
+}
+.rbc-event {
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+  padding: 4px;
+}
+
+.rbc-event:hover {
+  background-color: #2563eb; 
+}
+
+.rbc-time-gutter {
+  background-color: #f4f4f4;
+  font-weight: 500;
+  font-size: 1rem;
+  padding-left: 10px;
+  padding-right: 8px;
+  border-right: 1px solid #e2e8f0;
+  white-space: nowrap;
+}
+
+
+
+.rbc-time-view .rbc-timeslot-group {
+  border-bottom: 1px solid #e2e8f0; 
+}
+
+.rbc-time-view {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.dashboard-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.dashboard-header h1 {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.dashboard-header p {
+  font-size: 1.25rem;
+  color: #555;
+  margin-top: 0.5rem;
+}

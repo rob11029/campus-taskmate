@@ -1,0 +1,159 @@
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  overflow: hidden;
+}
+
+.modal-content {
+  background-color: #1a1b27;
+  color: #f5f5f5;
+  padding: 2rem;
+  padding-top: 2.5rem; /* Extra top spacing for the title */
+  border-radius: 16px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+  position: relative;
+  font-family: 'Segoe UI', sans-serif;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  font-size: 1.5rem;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  z-index: 10;
+  line-height: 1;
+}
+
+.edit-task-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  gap: 1.5rem;
+}
+
+.edit-task-form h2 {
+  text-align: center;
+  width: 100%;
+}
+
+.edit-task-form label {
+  font-size: 0.95rem;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+  color: #e0e0e0;
+  text-align: center;
+}
+
+.edit-task-form input,
+.edit-task-form textarea,
+.edit-task-form select,
+.form-group,
+.form-row {
+  width: 100%;
+  max-width: 360px;
+}
+
+.edit-task-form input,
+.edit-task-form textarea,
+.edit-task-form select {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #333641;
+  background-color: #2a2c3b;
+  color: #f5f5f5;
+  font-size: 1rem;
+  resize: none;
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+.edit-task-form input:focus,
+.edit-task-form textarea:focus,
+.edit-task-form select:focus {
+  border: 1px solid #3b82f6;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.form-row .form-group {
+  flex: 1;
+  min-width: 120px;
+  align-items: center;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.save-btn,
+.delete-btn {
+  padding: 0.7rem 1.4rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.save-btn {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.save-btn:hover {
+  background-color: #2563eb;
+}
+
+.delete-btn {
+  background-color: #ef4444;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #dc2626;
+}
+.form-row .form-group:not(:last-child) {
+  margin-right: 0.5rem; /* or try 1rem for more spacing */
+}

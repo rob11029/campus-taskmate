@@ -18,7 +18,7 @@ function Login({onLogin}) {
             );
 
             if (user) {
-                onLogin(true);
+                onLogin(user);
             } else {
                 setError('Invalid username or password');
             }

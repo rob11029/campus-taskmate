@@ -1,21 +1,51 @@
 import { useState } from 'react';
 import './TaskForm.css';
 
-export default function TaskForm() {
+export default function TaskForm({ currentUser, fetchTasks }) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [priority, setPriority] = useState('Medium');
   const [dueDate, setDueDate] = useState('');
+  const [error, setError] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({ title, description, priority, dueDate });
 
-    // Clear form
-    setTitle('');
-    setDescription('');
-    setPriority('Medium');
-    setDueDate('');
+    if (!currentUser) {
+      setError("User not logged in.");
+      return;
+    }
+
+    const newTask = {
+      title,
+      description,
+      priority,
+      dueDate,
+      userId: currentUser.id,
+      status: 'todo' // ⬅️ Added to support Kanban columns
+    };
+
+    try {
+      const response = await fetch('https://68143536225ff1af162829e7.mockapi.io/campus-taskmate/tasks', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newTask)
+      });
+
+      if (!response.ok) throw new Error('Failed to create task.');
+
+      await fetchTasks(); // ⬅️ Refetch updated tasks list
+      setTitle('');
+      setDescription('');
+      setPriority('Medium');
+      setDueDate('');
+      setError(null);
+    } catch (err) {
+      console.error("Error creating task:", err);
+      setError("Something went wrong. Please try again.");
+    }
   };
 
   return (
@@ -49,6 +79,7 @@ export default function TaskForm() {
       </div>
 
       <button type="submit">Create Task</button>
+      {error && <p className="error-message">{error}</p>}
     </form>
   );
 }

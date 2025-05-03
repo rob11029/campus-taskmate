@@ -1,0 +1,108 @@
+.kanban-board {
+    display: flex;
+    justify-content: center;  /* Centers the entire board */
+    align-items: flex-start;
+    gap: 1rem; /* 🔽 Reduce spacing between columns */
+    padding: 1rem;
+    flex-wrap: wrap;
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
+  
+  .kanban-column {
+    flex: 1;
+    max-width: 260px; /* 🔽 Slightly smaller max width */
+    min-width: 200px;
+    background-color: #dbe0e8;
+    border-radius: 12px;
+    padding: 1rem;
+    height: 65vh;
+    overflow-y: auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+  }
+  
+  
+  .kanban-column h3 {
+    text-align: center;
+    color: #1e293b;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .kanban-card {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    width: 100%; /* ✅ Always fit inside column */
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+  }
+  
+  .kanban-card strong {
+    display: block;
+    font-size: 0.95rem;
+    color: #111827;
+    margin-bottom: 0.25rem;
+  }
+  
+  .kanban-card p {
+    font-size: 0.85rem;
+    color: #4b5563;
+    margin: 0;
+  }
+  .kanban-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  
+  .task-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .priority-badge {
+    padding: 0.25rem 0.6rem;
+    border-radius: 8px;
+    font-weight: 600;
+    color: white;
+    font-size: 0.75rem;
+    text-transform: capitalize;
+  }
+  
+  .priority-badge.high {
+    background-color: #ef4444; /* red */
+  }
+  
+  .priority-badge.medium {
+    background-color: #f59e0b; /* amber */
+  }
+  
+  .priority-badge.low {
+    background-color: #10b981; /* green */
+  }
+  
+  .due-date {
+    font-weight: 500;
+    font-size: 0.75rem;
+  }
+  
+  .due-date.upcoming {
+    color: #10b981;
+  }
+  
+  .due-date.due-today {
+    color: #facc15;
+  }
+  
+  .due-date.overdue {
+    color: #ef4444;
+  }
+  
